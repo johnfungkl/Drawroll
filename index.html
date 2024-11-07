@@ -22,6 +22,8 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-width: 800px;
+            width: 90%;
         }
 
         button {
@@ -45,6 +47,17 @@
             padding: 10px;
             display: none;
         }
+
+        #videoContainer {
+            display: none;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        video {
+            width: 100%;
+            max-width: 600px;
+        }
     </style>
 </head>
 <body>
@@ -52,6 +65,12 @@
         <h1>今次食咩好</h1>
         <button onclick="drawLot()">抽籤</button>
         <div id="result"></div>
+        <div id="videoContainer">
+            <video id="rickRoll" controls autoplay>
+                <source src="https://youtu.be/dQw4w9WgXcQ" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
     </div>
 
     <script>
@@ -68,19 +87,16 @@
             ];
             
             const result = document.getElementById("result");
+            const videoContainer = document.getElementById("videoContainer");
             result.style.display = "none";
+            videoContainer.style.display = "none";
             
-            // 添加簡單嘅動畫效果
-            setTimeout(() => {
-                const randomIndex = Math.floor(Math.random() * options.length);
-                result.textContent = options[randomIndex];
-                result.style.display = "block";
-                
-                // 延遲1秒後跳轉到YouTube
-                setTimeout(() => {
-                    window.open("https://youtu.be/dQw4w9WgXcQ", "_blank");
-                }, 1000);
-            }, 500);
+            // 移除延遲，讓結果和影片同時顯示
+            const randomIndex = Math.floor(Math.random() * options.length);
+            result.textContent = options[randomIndex];
+            result.style.display = "block";
+            videoContainer.style.display = "block";
+            document.getElementById("rickRoll").play();
         }
     </script>
 </body>
