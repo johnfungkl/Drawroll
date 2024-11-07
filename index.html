@@ -76,7 +76,18 @@
             
             // 0.5秒後開啟YouTube
             setTimeout(() => {
-                window.location.href = "https://youtu.be/dQw4w9WgXcQ";
+                try {
+                    // 嘗試使用window.open()
+                    const newWindow = window.open("https://youtu.be/dQw4w9WgXcQ", "_blank");
+                    
+                    // 如果window.open()失敗，使用location.href
+                    if (newWindow === null || typeof(newWindow) === 'undefined') {
+                        window.location.href = "https://youtu.be/dQw4w9WgXcQ";
+                    }
+                } catch(e) {
+                    // 如果出錯，使用location.href作為後備方案
+                    window.location.href = "https://youtu.be/dQw4w9WgXcQ";
+                }
             }, 500);
         }
     </script>
