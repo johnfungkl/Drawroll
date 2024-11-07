@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>抽籤網站</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            background: #f0f0f0;
+        }
+        
+        .container {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 20px 0;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #result {
+            font-size: 24px;
+            margin-top: 20px;
+            padding: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>今次食咩好</h1>
+        <button onclick="drawLot()">抽籤</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function drawLot() {
+            const options = [
+                "你係on9",
+                "你係on9",
+                "你係on9",
+                "你係on9",
+                "你係on9",
+                "你係on9",
+                "你係on9",
+                "你係on9"
+            ];
+            
+            const result = document.getElementById("result");
+            result.style.display = "none";
+            
+            // 添加簡單嘅動畫效果
+            setTimeout(() => {
+                const randomIndex = Math.floor(Math.random() * options.length);
+                result.textContent = options[randomIndex];
+                result.style.display = "block";
+                
+                // 延遲1秒後跳轉到YouTube
+                setTimeout(() => {
+                    window.open("https://youtu.be/dQw4w9WgXcQ", "_blank");
+                }, 1000);
+            }, 500);
+        }
+    </script>
+</body>
+</html>
